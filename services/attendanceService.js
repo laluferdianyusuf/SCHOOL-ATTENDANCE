@@ -13,45 +13,53 @@ class AttendanceService {
       });
       console.log(getStudent);
 
-      if (getStudent) {
-        const createAttendance = await AttendanceRepository.createAttendance({
-          present: "present",
-          studentId: studentId,
-        });
+      const createAttendance = await AttendanceRepository.createAttendance({
+        present: "present",
+        studentId: studentId,
+      });
 
-        // if (createAttendance) {
-        //   const message = `Your child ${getStudent.name} have been attendance at ${getStudent.createdAt}.`;
+      return {
+        status: true,
+        status_code: 201,
+        message:
+          "Your attendance has been recorded but no parent found to notify",
+        data: { attendance: createAttendance },
+      };
+      // if (getStudent) {
 
-        //   await client.messages.create({
-        //     body: message,
-        //     from: "whatsapp:+14155238886",
-        //     to: `whatsapp:${getStudent.parentPhone}`,
-        //   });
+      //   // if (createAttendance) {
+      //   //   const message = `Your child ${getStudent.name} have been attendance at ${getStudent.createdAt}.`;
 
-        //   return {
-        //     status: true,
-        //     status_code: 201,
-        //     message:
-        //       "Your attendance has been recorded and notification sent to parent",
-        //     data: { attendance: createAttendance },
-        //   };
-        // } else {
-        // }
-        return {
-          status: true,
-          status_code: 201,
-          message:
-            "Your attendance has been recorded but no parent found to notify",
-          data: { attendance: createAttendance },
-        };
-      } else {
-        return {
-          status: false,
-          status_code: 404,
-          message: "Fingerprint not found",
-          data: { attendance: null },
-        };
-      }
+      //   //   await client.messages.create({
+      //   //     body: message,
+      //   //     from: "whatsapp:+14155238886",
+      //   //     to: `whatsapp:${getStudent.parentPhone}`,
+      //   //   });
+
+      //   //   return {
+      //   //     status: true,
+      //   //     status_code: 201,
+      //   //     message:
+      //   //       "Your attendance has been recorded and notification sent to parent",
+      //   //     data: { attendance: createAttendance },
+      //   //   };
+      //   // } else {
+      //   // }
+      //   return {
+      //     status: true,
+      //     status_code: 201,
+      //     message:
+      //       "Your attendance has been recorded but no parent found to notify",
+      //     data: { attendance: createAttendance },
+      //   };
+      // } else {
+      //   return {
+      //     status: false,
+      //     status_code: 404,
+      //     message: "Fingerprint not found",
+      //     data: { attendance: null },
+      //   };
+      // }
     } catch (error) {
       console.log(error);
       return {
