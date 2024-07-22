@@ -3,7 +3,7 @@
     "username": "root",
     "password": "azySnKAVHJeFSDRLBnlmkRStLPICaLGV",
     "database": "railway",
-    "host": "iaduct.proxy.rlwy.net",
+    "host": "viaduct.proxy.rlwy.net",
     "dialect": "mysql",
     "url": "mysql://root:azySnKAVHJeFSDRLBnlmkRStLPICaLGV@viaduct.proxy.rlwy.net:27248/railway",
     "port": 27248
@@ -19,7 +19,7 @@
     "username": "root",
     "password": "azySnKAVHJeFSDRLBnlmkRStLPICaLGV",
     "database": "railway",
-    "host": "iaduct.proxy.rlwy.net",
+    "host": "viaduct.proxy.rlwy.net",
     "dialect": "mysql",
     "url": "mysql://root:azySnKAVHJeFSDRLBnlmkRStLPICaLGV@viaduct.proxy.rlwy.net:27248/railway",
     "port": 27248
