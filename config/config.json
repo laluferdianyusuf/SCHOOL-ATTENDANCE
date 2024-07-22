@@ -3,21 +3,25 @@
     "username": "root",
     "password": "azySnKAVHJeFSDRLBnlmkRStLPICaLGV",
     "database": "railway",
-    "host": "mysql.railway.internal",
-    "dialect": "mysql"
+    "host": "iaduct.proxy.rlwy.net",
+    "dialect": "mysql",
+    "url": "mysql://root:azySnKAVHJeFSDRLBnlmkRStLPICaLGV@viaduct.proxy.rlwy.net:27248/railway",
+    "port": 27248
   },
   "test": {
-    "username": "root",
-    "password": "azySnKAVHJeFSDRLBnlmkRStLPICaLGV",
-    "database": "railway",
-    "host": "mysql.railway.internal",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "ferdi",
+    "database": "doorlock_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": "azySnKAVHJeFSDRLBnlmkRStLPICaLGV",
     "database": "railway",
-    "host": "mysql.railway.internal",
-    "dialect": "mysql"
+    "host": "iaduct.proxy.rlwy.net",
+    "dialect": "mysql",
+    "url": "mysql://root:azySnKAVHJeFSDRLBnlmkRStLPICaLGV@viaduct.proxy.rlwy.net:27248/railway",
+    "port": 27248
   }
 }
