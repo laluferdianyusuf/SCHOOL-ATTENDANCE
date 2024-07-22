@@ -2,12 +2,11 @@ const AttendanceRepository = require("../repositories/attendanceRepository");
 const StudentRepository = require("../repositories/studentsRepository");
 const twilio = require("twilio");
 
-const accountSid = "AC2daccc77f82de0500d09b71bc4fb20e7";
-const authToken = "015f5e3bf191e10e430935356ea9527e";
-const client = twilio(accountSid, authToken);
-
 class AttendanceService {
   static async createAttendance({ studentId, timestamp, fingerprint }) {
+    const accountSid = "AC2daccc77f82de0500d09b71bc4fb20e7";
+    const authToken = "015f5e3bf191e10e430935356ea9527e";
+    const client = twilio(accountSid, authToken);
     try {
       const getStudent = await StudentRepository.getStudentFingerprint({
         fingerprint,
