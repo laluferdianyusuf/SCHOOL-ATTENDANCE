@@ -1,12 +1,10 @@
 const { attendances } = require("../models");
 
 class AttendanceRepository {
-  static async createAttendance({ present, timestamp, studentId, schoolId }) {
+  static async createAttendance({ present, studentId }) {
     const createAttendance = await attendances.create({
       present,
-      timestamp,
       studentId,
-      schoolId,
     });
     return createAttendance;
   }

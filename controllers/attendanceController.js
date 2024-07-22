@@ -1,12 +1,11 @@
 const AttendanceService = require("../services/attendanceService");
 
 const createAttendance = async (req, res) => {
-  const { schoolId, timestamp } = req.body;
+  const { studentId } = req.body;
 
   const { status, status_code, message, data } =
     await AttendanceService.createAttendance({
-      schoolId,
-      timestamp,
+      studentId,
     });
   res.status(status_code).send({
     status: status,
