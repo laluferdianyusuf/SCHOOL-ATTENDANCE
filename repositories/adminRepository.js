@@ -1,4 +1,4 @@
-const { admins, School } = require("../models");
+const { admins } = require("../models");
 
 class AdminRepository {
   static async createAdmin({

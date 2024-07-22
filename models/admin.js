@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Admin.belongsTo(models.School, { foreignKey: "schoolId" });
+      Admin.belongsTo(models.schools, { foreignKey: "schoolId" });
     }
   }
   Admin.init(
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Admin",
+      modelName: "admins",
     }
   );
   return Admin;

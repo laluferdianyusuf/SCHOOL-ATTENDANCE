@@ -9,16 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      School.hasMany(models.Student, {
+      School.hasMany(models.students, {
         foreignKey: "schoolId",
       });
-      School.hasMany(models.Attendance, {
+      School.hasMany(models.attendances, {
         foreignKey: "schoolId",
       });
       // School.hasMany(models.FingerprintDevice, {
       //   foreignKey: "schoolId",
       // });
-      School.hasMany(models.Admin, {
+      School.hasMany(models.admins, {
         foreignKey: "schoolId",
       });
     }
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "School",
+      modelName: "schools",
     }
   );
   return School;
