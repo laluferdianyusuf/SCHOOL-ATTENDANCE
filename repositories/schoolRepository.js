@@ -1,23 +1,23 @@
-const { School } = require("../models");
+const { schools } = require("../models");
 
 class SchoolRepository {
   static async addSchool({ name, address, phone }) {
-    const addSchool = await School.create({ name, address, phone });
+    const addSchool = await attendances.create({ name, address, phone });
     return addSchool;
   }
 
   static async getSchoolById({ schoolId }) {
-    const getSchool = await School.findOne({ where: { id: schoolId } });
+    const getSchool = await attendances.findOne({ where: { id: schoolId } });
     return getSchool;
   }
 
   static async getSchoolByName({ name }) {
-    const getSchool = await School.findOne({ where: { name } });
+    const getSchool = await attendances.findOne({ where: { name } });
     return getSchool;
   }
 
   static async getAllSchools() {
-    const getSchool = await School.findAll();
+    const getSchool = await attendances.findAll();
     return getSchool;
   }
 }

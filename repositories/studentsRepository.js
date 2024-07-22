@@ -1,4 +1,4 @@
-const { Student } = require("../models");
+const { students } = require("../models");
 
 class StudentRepository {
   static async addStudent({
@@ -12,7 +12,7 @@ class StudentRepository {
     parentPhone,
     fingerprint,
   }) {
-    const addStudent = await Student.create({
+    const addStudent = await students.create({
       name,
       studentId,
       schoolId,
@@ -27,24 +27,24 @@ class StudentRepository {
   }
 
   static async getStudentByName({ name }) {
-    const getStudent = await Student.findOne({ where: { name } });
+    const getStudent = await students.findOne({ where: { name } });
     return getStudent;
   }
 
   static async getStudentBySchoolId({ schoolId }) {
-    const getStudent = await Student.findAll({
+    const getStudent = await students.findAll({
       where: { schoolId: schoolId },
     });
     return getStudent;
   }
 
   static async getStudentFingerprint({ fingerprint }) {
-    const getStudent = await Student.findOne({ where: { fingerprint } });
+    const getStudent = await students.findOne({ where: { fingerprint } });
     return getStudent;
   }
 
   static async getStudentByClassroom({ classroom }) {
-    const getStudent = await Student.findOne({
+    const getStudent = await students.findOne({
       where: { classroom: classroom },
     });
     return getStudent;

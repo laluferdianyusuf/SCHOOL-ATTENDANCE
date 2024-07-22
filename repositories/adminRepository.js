@@ -1,4 +1,4 @@
-const { Admin, School } = require("../models");
+const { admins, School } = require("../models");
 
 class AdminRepository {
   static async createAdmin({
@@ -9,7 +9,7 @@ class AdminRepository {
     role,
     schoolId,
   }) {
-    const createAdmin = await Admin.create({
+    const createAdmin = await admins.create({
       name,
       username,
       email,
@@ -22,22 +22,22 @@ class AdminRepository {
   }
 
   static async findAdminById({ id }) {
-    const findAdmin = await Admin.findOne({ where: { id } });
+    const findAdmin = await admins.findOne({ where: { id } });
     return findAdmin;
   }
 
   static async findAdminByEmail({ email }) {
-    const findAdmin = await Admin.findOne({ where: { email } });
+    const findAdmin = await admins.findOne({ where: { email } });
     return findAdmin;
   }
 
   static async getAdminBySchoolId({ schoolId }) {
-    const getAdmin = await Admin.findAll({ where: { schoolId } });
+    const getAdmin = await admins.findAll({ where: { schoolId } });
     return getAdmin;
   }
 
   static async getAdminByUsername({ username }) {
-    const getAdmin = await Admin.findOne({ where: { username } });
+    const getAdmin = await admins.findOne({ where: { username } });
     return getAdmin;
   }
 }
