@@ -1,0 +1,60 @@
+BACKEND REQUIREMENTS
+
+FEATURES
+- 
+1. relasi semua tabel 
+   - tabel school  dengan students
+   - tabel student dengan parents dan attendance
+   - tabel parents dengan students
+   - tabel attendance dengan school dan students
+2. repositories yang menghubungkan semua tabel
+3. logika bisnis
+   a. Manajemen Sekolah
+      Data Sekolah: Setiap sekolah memiliki informasi seperti nama sekolah, alamat, dan nomor telepon.Manajemen Fingerprint Devices: Setiap sekolah bisa memiliki beberapa perangkat fingerprint yang digunakan untuk absensi siswa.
+   b. Manajemen Siswa
+      Data Siswa: Informasi dasar siswa seperti nama, nomor identitas siswa (misalnya NIS), dan nomor telepon orang tua.
+      Hubungan dengan Orang Tua: Setiap siswa terhubung dengan satu atau lebih orang tua yang memiliki informasi kontak penting.
+   c. Absensi Siswa
+      Perekaman Absensi: Setiap kali siswa melakukan absensi menggunakan perangkat fingerprint, catatan absensi disimpan dalam database bersama dengan timestamp.
+      Relasi dengan Siswa dan Sekolah: Absensi direkam berdasarkan ID siswa dan ID sekolah yang bersangkutan.
+   d. Notifikasi kepada Orang Tua
+      Pengiriman Pesan: Setelah siswa melakukan absensi, sistem mengirimkan notifikasi ke orang tua menggunakan layanan WhatsApp. 
+      Konten Pesan: Pesan harus informatif, mencakup informasi seperti waktu absensi dan sekolah yang bersangkutan.
+   e. Keamanan dan Privasi
+      Akses dan Otorisasi: Pastikan sistem hanya dapat diakses oleh pihak yang berwenang, seperti admin sekolah atau staf pendidikan yang ditunjuk. 
+      Perlindungan Data: Informasi pribadi siswa dan orang tua harus dijaga kerahasiaannya sesuai dengan regulasi perlindungan data yang berlaku.
+   f. Monitoring dan Pelaporan
+      Dashboard Administratif: Admin sekolah dapat melihat statistik absensi secara real-time dan laporan historis untuk analisis kinerja. 
+      Audit Trail: Sistem mencatat setiap perubahan atau akses ke data untuk keperluan audit dan keamanan.
+4. API 
+   a. API Sekolah
+      GET api/v1/schools: Mendapatkan daftar semua sekolah yang terdaftar.
+      GET api/v1/schools/: Mendapatkan detail sebuah sekolah berdasarkan ID.
+      POST api/v1/schools: Membuat sekolah baru.
+      PUT api/v1/schools/: Mengupdate informasi sekolah berdasarkan ID.
+      DELETE api/v1/schools/: Menghapus sekolah berdasarkan ID.
+   b. API Siswa
+      GET api/v2/students: Mendapatkan daftar semua siswa dari semua sekolah.
+      GET api/v2/students/: Mendapatkan detail siswa berdasarkan ID.
+      POST api/v2/students: Mendaftarkan siswa baru ke dalam sebuah sekolah. 
+      PUT api/v2/students/: Mengupdate informasi siswa berdasarkan ID.
+      DELETE api/v2/students/: Menghapus siswa berdasarkan ID.
+   c. API Orang Tua
+      GET api/v3/parents: Mendapatkan daftar semua orang tua yang terdaftar.
+      GET api/v3/parents/: Mendapatkan detail orang tua berdasarkan ID.
+      POST api/v3/parents: Menambahkan orang tua baru untuk seorang siswa.
+      PUT api/v3/parents/: Mengupdate informasi orang tua berdasarkan ID.
+      DELETE v3/parents/: Menghapus orang tua berdasarkan ID.
+   d. API Absensi
+      POST api/v4/attendance: Merekam absensi siswa berdasarkan ID siswa dan ID sekolah. Endpoint ini akan memicu pengiriman notifikasi kepada orang tua setelah berhasil merekam absensi.
+   e. API Fingerprint Devices
+      GET api/v5/devices: Mendapatkan daftar semua perangkat fingerprint yang terdaftar di sekolah.
+      GET api/v5/devices/: Mendapatkan detail perangkat fingerprint berdasarkan ID.
+      POST api/v5/devices: Menambahkan perangkat fingerprint baru untuk sebuah sekolah.
+      PUT api/v5/devices/: Mengupdate informasi perangkat fingerprint berdasarkan ID.
+      DELETE api/v5/devices/: Menghapus perangkat fingerprint berdasarkan ID.
+   f. API Notifikasi (WhatsApp)
+      POST api/v6/notifications/whatsapp: Endpoint khusus untuk mengirimkan pesan notifikasi melalui WhatsApp kepada orang tua setelah siswa melakukan absensi.
+   g. API Auth (Opsi Tambahan)
+      POST api/v7/auth/login: Endpoint untuk otentikasi dan pembuatan token sesi untuk admin atau pengguna yang berwenang.
+      POST api/v7/auth/logout: Endpoint untuk mengakhiri sesi pengguna.
