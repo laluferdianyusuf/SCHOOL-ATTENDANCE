@@ -9,7 +9,7 @@ class AttendanceService {
     const client = twilio(accountSid, authToken);
     try {
       const getStudent = await StudentRepository.getStudentFingerprint({
-        fingerprint,
+        studentId,
       });
 
       if (getStudent) {

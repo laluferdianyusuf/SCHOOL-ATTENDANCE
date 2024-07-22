@@ -38,8 +38,8 @@ class StudentRepository {
     return getStudent;
   }
 
-  static async getStudentFingerprint({ fingerprint }) {
-    const getStudent = await students.findOne({ where: { fingerprint } });
+  static async getStudentFingerprint({ id }) {
+    const getStudent = await students.findOne({ where: { id: id } });
     return getStudent;
   }
 
