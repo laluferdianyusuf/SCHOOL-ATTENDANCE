@@ -10,6 +10,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+app.get("/", () => {
+  alert("connected");
+});
+
 // controller
 // admin
 const AdminController = require("./controllers/adminController");
