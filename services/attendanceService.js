@@ -3,7 +3,7 @@ const StudentRepository = require("../repositories/studentsRepository");
 const twilio = require("twilio");
 
 const accountSid = "ACc668cfbe01ed2c160dcffc2bbf3fbe8e";
-const authToken = "89829415ba6eaa2eacb3dccca50d8435";
+const authToken = "3ffed4f8600206200b1c010483cf3abb";
 const client = twilio(accountSid, authToken);
 class AttendanceService {
   static async createAttendance({ studentId, timestamp }) {
@@ -27,11 +27,11 @@ class AttendanceService {
         if (createAttendance) {
           const message = `Your child ${getStudent.name} have been attendance at ${getStudent.createdAt}.`;
 
-          // await client.messages.create({
-          //   body: message,
-          //   from: "whatsapp:+14155238886",
-          //   to: `whatsapp:${getStudent.parentPhone}`,
-          // });
+          await client.messages.create({
+            body: message,
+            from: "whatsapp:+14155238886",
+            to: `whatsapp:${getStudent.parentPhone}`,
+          });
 
           return {
             status: true,
