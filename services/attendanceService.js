@@ -21,7 +21,7 @@ class AttendanceService {
         const createAttendance = await AttendanceRepository.createAttendance({
           present: "present",
           studentId: parseInt(studentId),
-          timestamp: parseDataTime,
+          timestamp: timestamp,
         });
 
         if (createAttendance) {
