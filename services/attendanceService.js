@@ -13,6 +13,9 @@ class AttendanceService {
       // });
       const parseDataId = studentId.split("&")[0];
       const parseDataTime = studentId.split("&")[1];
+      console.log(studentId);
+      console.log(parseDataId);
+      console.log(parseDataTime);
 
       const createAttendance = await AttendanceRepository.createAttendance({
         present: "present",
