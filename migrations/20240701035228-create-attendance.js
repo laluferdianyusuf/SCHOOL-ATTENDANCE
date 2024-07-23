@@ -12,11 +12,6 @@ module.exports = {
       present: Sequelize.STRING,
       studentId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: "students",
-          key: "id",
-        },
-        onDelete: "CASCADE",
       },
       schoolId: {
         type: Sequelize.INTEGER,
@@ -27,8 +22,7 @@ module.exports = {
         onDelete: "CASCADE",
       },
       timestamp: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +35,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Attendances");
+    await queryInterface.dropTable("attendances");
   },
 };
