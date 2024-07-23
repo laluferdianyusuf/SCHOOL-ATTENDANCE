@@ -6,10 +6,10 @@ const accountSid = "ACc668cfbe01ed2c160dcffc2bbf3fbe8e";
 const authToken = "89829415ba6eaa2eacb3dccca50d8435";
 const client = twilio(accountSid, authToken);
 class AttendanceService {
-  static async createAttendance({ studentId }) {
+  static async createAttendance({ studentId, timestamp }) {
     try {
       const parseDataId = studentId.split("&")[0];
-      const parseDataTime = studentId.split("&")[1];
+      const parseDataTime = timestamp.split("&timestamp")[1];
       console.log(parseDataId);
       console.log(parseDataId);
       console.log(parseDataTime);
