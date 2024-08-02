@@ -3,8 +3,10 @@
     "username": "root",
     "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
     "database": "railway",
-    "host": "viaduct.proxy.rlwy.net",
-    "dialect": "mysql"
+    "host": "mysql.railway.internal",
+    "dialect": "mysql",
+    "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@mysql.railway.internal:3306/railway",
+    "port": 3306
   },
   "test": {
     "username": "postgres",
@@ -17,7 +19,9 @@
     "username": "root",
     "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
     "database": "railway",
-    "host": "viaduct.proxy.rlwy.net",
-    "dialect": "mysql"
+    "host": "mysql.railway.internal",
+    "dialect": "mysql",
+    "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@mysql.railway.internal:3306/railway",
+    "port": 3306
   }
 }
