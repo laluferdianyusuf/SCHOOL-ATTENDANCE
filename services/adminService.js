@@ -112,11 +112,27 @@ class AdminService {
 
   static async Login({ username, password, schoolId }) {
     try {
-      if (!username || !password || !schoolId) {
+      if (!username) {
         return {
           status: false,
           status_code: 400,
-          message: "All fields are required",
+          message: "Username are required",
+          admin: null,
+        };
+      }
+      if (!password) {
+        return {
+          status: false,
+          status_code: 400,
+          message: "password are required",
+          admin: null,
+        };
+      }
+      if (!schoolId) {
+        return {
+          status: false,
+          status_code: 400,
+          message: "school are required",
           admin: null,
         };
       }
@@ -189,8 +205,7 @@ class AdminService {
           email: getAdmin.email,
           schoolId: getAdmin.schoolId,
         },
-        JWT.SECRET,
-        { expiresIn: "1h" }
+        JWT.SECRET
       );
 
       return {

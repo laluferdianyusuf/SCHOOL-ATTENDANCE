@@ -1,3 +1,4 @@
+const attendance = require("../models/attendance");
 const AttendanceRepository = require("../repositories/attendanceRepository");
 const StudentRepository = require("../repositories/studentsRepository");
 const twilio = require("twilio");
@@ -8,19 +9,15 @@ const client = twilio(accountSid, authToken);
 class AttendanceService {
   static async createAttendance({ studentId, timestamp }) {
     try {
-      const parseDataId = studentId.split("&")[0];
-      const parseDataTime = timestamp.split("&timestamp")[1];
-      console.log(parseDataId);
-      console.log(parseDataId);
-      console.log(parseDataTime);
-      const getStudent = await StudentRepository.getStudentFingerprint({
-        id: parseDataId,
+      const getStudent = await StudentRepository.getStudentById({
+        id: studentId,
       });
 
       if (getStudent) {
         const createAttendance = await AttendanceRepository.createAttendance({
           present: "present",
           studentId: parseInt(studentId),
+          schoolId: getStudent.schoolId,
           timestamp: timestamp,
         });
 
@@ -62,8 +59,44 @@ class AttendanceService {
       return {
         status: false,
         status_code: 500,
-        message: error,
+        message: "error occurred" + error.message,
         data: { attendance: null },
+      };
+    }
+  }
+
+  static async getAttendanceBySchoolId({ schoolId }) {
+    try {
+      const getAttendance = await AttendanceRepository.getAttendanceBySchoolId({
+        schoolId,
+      });
+      if (getAttendance) {
+        return {
+          status: true,
+          status_code: 200,
+          message: "Attendance retrieved",
+          data: {
+            attendance: getAttendance,
+          },
+        };
+      } else {
+        return {
+          status: false,
+          status_code: 404,
+          message: "Attendance not found",
+          data: {
+            attendance: null,
+          },
+        };
+      }
+    } catch (error) {
+      return {
+        status: false,
+        status_code: 500,
+        message: "Error" + error.message,
+        data: {
+          attendance: null,
+        },
       };
     }
   }

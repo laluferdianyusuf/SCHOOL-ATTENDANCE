@@ -52,11 +52,12 @@ class SchoolService {
       };
     }
   }
+
   static async getAllSchools() {
     try {
       const getSchool = await SchoolRepository.getAllSchools();
 
-      if (getSchool && getSchool.length > 0) {
+      if (getSchool) {
         return {
           status: true,
           status_code: 201,
@@ -83,6 +84,35 @@ class SchoolService {
         data: {
           schools: null,
         },
+      };
+    }
+  }
+
+  static async getSchoolById({ id }) {
+    try {
+      const getSchool = await SchoolRepository.getSchoolById({ id });
+
+      if (getSchool) {
+        return {
+          status: true,
+          status_code: 200,
+          message: "success",
+          data: { schools: getSchool },
+        };
+      } else {
+        return {
+          status: false,
+          status_code: 404,
+          message: "not found",
+          data: { schools: null },
+        };
+      }
+    } catch (error) {
+      return {
+        status: false,
+        status_code: 500,
+        message: "Error: " + error.message,
+        data: { schools: null },
       };
     }
   }

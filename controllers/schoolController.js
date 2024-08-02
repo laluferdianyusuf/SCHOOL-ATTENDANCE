@@ -23,4 +23,18 @@ const getAllSchools = async (req, res) => {
     .send({ status: status, message: message, data: data });
 };
 
-module.exports = { addSchool, getAllSchools };
+const getSchoolById = async (req, res) => {
+  const { id } = req.params;
+
+  const { status, status_code, message, data } =
+    await SchoolService.getSchoolById({ id });
+
+  res.status(status_code).send({
+    status: status,
+    status: status_code,
+    message: message,
+    data: data,
+  });
+};
+
+module.exports = { addSchool, getAllSchools, getSchoolById };

@@ -1,14 +1,18 @@
-const StudentService = require("../services/studentsService");
+const TeacherService = require("../services/teachersService");
 
-const addStudent = async (req, res) => {
-  const { name, classroom } = req.body;
+const createTeacher = async (req, res) => {
+  const { name, address, born, gender, religion, nip } = req.body;
   const school = req.admins.schoolId;
 
   const { status, status_code, message, data } =
-    await StudentService.addStudent({
+    await TeacherService.createTeacher({
       name,
+      address,
+      born,
+      gender,
+      religion,
+      nip,
       schoolId: school,
-      classroom,
     });
 
   res
@@ -16,11 +20,11 @@ const addStudent = async (req, res) => {
     .send({ status: status, message: message, data: data });
 };
 
-const getStudents = async (req, res, next) => {
+const getStudentsBySchoolId = async (req, res, next) => {
   const schoolId = req.admins.schoolId;
 
   const { status, status_code, message, data } =
-    await StudentService.findStudent({
+    await TeacherService.getTeacherBySchoolId({
       schoolId: schoolId,
     });
 
@@ -31,20 +35,19 @@ const getStudents = async (req, res, next) => {
   });
 };
 
-const updateStudent = async (req, res, next) => {
+const updateTeacher = async (req, res, next) => {
   const { id } = req.params;
 
-  const { name, classroom, parentName, job, relationship, parentPhone } =
-    req.body;
+  const { name, address, born, gender, religion, nip } = req.body;
   const { status, status_code, message, data } =
-    await StudentService.updateStudent({
+    await TeacherService.updateTeacher({
       id,
       name,
-      classroom,
-      parentName,
-      job,
-      relationship,
-      parentPhone,
+      address,
+      born,
+      gender,
+      religion,
+      nip,
     });
 
   res.status(status_code).send({
@@ -55,10 +58,10 @@ const updateStudent = async (req, res, next) => {
   });
 };
 
-const deleteStudent = async (req, res) => {
+const deleteTeacher = async (req, res) => {
   const { id } = req.params;
   const { status, status_code, message, data } =
-    await StudentService.deleteStudent({ id });
+    await TeacherService.deleteTeacher({ id });
 
   res.status(status_code).send({
     status: status,
@@ -68,11 +71,11 @@ const deleteStudent = async (req, res) => {
   });
 };
 
-const getStudentById = async (req, res) => {
+const getTeacherById = async (req, res) => {
   const { id } = req.params;
 
   const { status, status_code, message, data } =
-    await StudentService.getStudentById({ id });
+    await TeacherService.getTeacherById({ id });
   res.status(status_code).send({
     status: status,
     status_code: status_code,
@@ -82,9 +85,9 @@ const getStudentById = async (req, res) => {
 };
 
 module.exports = {
-  addStudent,
-  getStudents,
-  updateStudent,
-  deleteStudent,
-  getStudentById,
+  createTeacher,
+  getStudentsBySchoolId,
+  updateTeacher,
+  deleteTeacher,
+  getTeacherById,
 };

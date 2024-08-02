@@ -4,61 +4,45 @@ const AdminRepository = require("../repositories/adminRepository");
 
 const authenticate = async (req, res, next) => {
   const authHeader = req.get("Authorization");
+
   let token = "";
 
-  if (authHeader && authHeader.startsWith("Bearer ")) {
+  if (authHeader && authHeader.startsWith("Bearer"))
     token = authHeader.split(" ")[1];
-  } else {
+  else
     return res.status(401).send({
-      status: false,
-      message: "you are not authorized",
+      status_info: false,
+      message: "You have to login first",
       data: null,
     });
-  }
 
   try {
-    const { id } = jwt.verify(token, JWT.SECRET);
+    const { email } = jwt.verify(token, JWT.SECRET);
 
-    const getAdmin = await AdminRepository.findAdminById({ id });
-
-    req.admins = getAdmin;
+    const getUsers = await AdminRepository.findAdminByEmail({ email });
+    req.admins = getUsers;
 
     next();
-    return;
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
     return res.status(401).send({
-      status: false,
-      message: "your section is not authorized",
+      status_info: false,
+      message: "Please login again",
       data: null,
     });
   }
 };
 
-const isGuru = async (req, res, next) => {
-  const admin = req.admins;
-  if (admin.role === ROLES.GURU) {
+const isSuperAdmin = async (req, res, next) => {
+  const user = req.users;
+
+  if (user && user.role === ROLES.isSuperAdmin) {
     return next();
   }
-
-  return res.status(401).send({
-    status: false,
-    message: "You do not have permission",
+  return res.status(401).json({
+    status_info: false,
+    message: "You don't have permission (ADMINISTRATOR)",
     data: null,
   });
 };
 
-const isAdmin = async (req, res, next) => {
-  const admin = req.admins;
-  if (admin.role === ROLES.ADMIN) {
-    return next();
-  }
-
-  return res.status(401).send({
-    status: false,
-    message: "You do not have permission",
-    data: null,
-  });
-};
-
-module.exports = { authenticate, isGuru, isAdmin };
+module.exports = { authenticate, isSuperAdmin };

@@ -58,3 +58,31 @@ FEATURES
    g. API Auth (Opsi Tambahan)
       POST api/v7/auth/login: Endpoint untuk otentikasi dan pembuatan token sesi untuk admin atau pengguna yang berwenang.
       POST api/v7/auth/logout: Endpoint untuk mengakhiri sesi pengguna.
+
+      // {
+//   "development": {
+//     "username": "root",
+//     "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
+//     "database": "railway",
+//     "host": "viaduct.proxy.rlwy.net",
+//     "dialect": "mysql",
+//     "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@viaduct.proxy.rlwy.net:36609/railway",
+//     "port": 36609
+//   },
+//   "test": {
+//     "username": "postgres",
+//     "password": "ferdi",
+//     "database": "doorlock_db",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   },
+//   "production": {
+//     "username": "root",
+//     "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
+//     "database": "railway",
+//     "host": "viaduct.proxy.rlwy.net",
+//     "dialect": "mysql",
+//     "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@viaduct.proxy.rlwy.net:36609/railway",
+//     "port": 36609
+//   }
+// }

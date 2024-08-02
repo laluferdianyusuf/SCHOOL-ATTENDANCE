@@ -1,10 +1,18 @@
 const { students } = require("../models");
 
 class StudentRepository {
-  static async addStudent({
+  static async addStudent({ name, schoolId, classroom }) {
+    const addStudent = await students.create({
+      name,
+      schoolId,
+      classroom,
+    });
+    return addStudent;
+  }
+
+  static async updateStudent({
+    id,
     name,
-    studentId,
-    schoolId,
     classroom,
     parentName,
     job,
@@ -12,18 +20,20 @@ class StudentRepository {
     parentPhone,
     fingerprint,
   }) {
-    const addStudent = await students.create({
-      name,
-      studentId,
-      schoolId,
-      classroom,
-      parentName,
-      job,
-      relationship,
-      parentPhone,
-      fingerprint,
-    });
-    return addStudent;
+    const updateStudent = await students.update(
+      {
+        name,
+        classroom,
+        parentName,
+        job,
+        relationship,
+        parentPhone,
+        fingerprint,
+      },
+      { where: { id: id } }
+    );
+
+    return updateStudent;
   }
 
   static async getStudentByName({ name }) {
@@ -43,11 +53,21 @@ class StudentRepository {
     return getStudent;
   }
 
+  static async getStudentById({ id }) {
+    const getStudent = await students.findOne({ where: { id: id } });
+    return getStudent;
+  }
+
   static async getStudentByClassroom({ classroom }) {
     const getStudent = await students.findOne({
       where: { classroom: classroom },
     });
     return getStudent;
+  }
+
+  static async deleteStudent({ id }) {
+    const deleteStudent = await students.destroy({ where: { id: id } });
+    return deleteStudent;
   }
 }
 

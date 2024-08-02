@@ -33,6 +33,18 @@ const login = async (req, res, next) => {
     .send({ status: status, message: message, data: data });
 };
 
+const currentUser = async (req, res) => {
+  const currentUser = req.admins;
+
+  res.status(200).send({
+    status: true,
+    message: "You are logged in with this user",
+    data: {
+      user: currentUser,
+    },
+  });
+};
+
 const getAdminBySchoolId = async (req, res, next) => {
   const { schoolId } = req.admins;
 
@@ -46,4 +58,4 @@ const getAdminBySchoolId = async (req, res, next) => {
   });
 };
 
-module.exports = { register, login, getAdminBySchoolId };
+module.exports = { register, login, getAdminBySchoolId, currentUser };
