@@ -1,12 +1,12 @@
 {
   "development": {
     "username": "root",
-    "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
+    "password": "YQNLlZoUuyecABlfWffszBihYkhuzAiW",
     "database": "railway",
-    "host": "mysql.railway.internal",
+    "host": "viaduct.proxy.rlwy.net",
     "dialect": "mysql",
-    "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@mysql.railway.internal:3306/railway",
-    "port": 3306
+    "url": "mysql://root:YQNLlZoUuyecABlfWffszBihYkhuzAiW@viaduct.proxy.rlwy.net:19557/railway",
+    "port": 19557
   },
   "test": {
     "username": "postgres",
@@ -17,11 +17,11 @@
   },
   "production": {
     "username": "root",
-    "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
+    "password": "YQNLlZoUuyecABlfWffszBihYkhuzAiW",
     "database": "railway",
-    "host": "mysql.railway.internal",
+    "host": "viaduct.proxy.rlwy.net",
     "dialect": "mysql",
-    "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@mysql.railway.internal:3306/railway",
-    "port": 3306
+    "url": "mysql://root:YQNLlZoUuyecABlfWffszBihYkhuzAiW@viaduct.proxy.rlwy.net:19557/railway",
+    "port": 19557
   }
 }
