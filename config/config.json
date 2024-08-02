@@ -4,9 +4,7 @@
     "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
     "database": "railway",
     "host": "viaduct.proxy.rlwy.net",
-    "dialect": "mysql",
-    "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@viaduct.proxy.rlwy.net:36609/railway",
-    "port": 36609
+    "dialect": "mysql"
   },
   "test": {
     "username": "postgres",
@@ -20,8 +18,6 @@
     "password": "tEjhmWxtWJcwKbydAHIANarqsIWmJcZd",
     "database": "railway",
     "host": "viaduct.proxy.rlwy.net",
-    "dialect": "mysql",
-    "url": "mysql://root:tEjhmWxtWJcwKbydAHIANarqsIWmJcZd@viaduct.proxy.rlwy.net:36609/railway",
-    "port": 36609
+    "dialect": "mysql"
   }
 }
