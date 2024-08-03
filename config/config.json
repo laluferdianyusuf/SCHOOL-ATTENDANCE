@@ -4,7 +4,8 @@
     "password": null,
     "database": "school_attendance",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "DB_URI": "mysql://root:tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM@viaduct.proxy.rlwy.net:24673/railway"
   },
   "test": {
     "username": "root",
@@ -18,6 +19,6 @@
     "password": null,
     "database": "school_attendance",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "DB_URI": "mysql://root:tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM@viaduct.proxy.rlwy.net:24673/railway"
   }
 }
