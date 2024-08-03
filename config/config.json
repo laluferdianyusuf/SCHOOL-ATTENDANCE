@@ -1,27 +1,23 @@
 {
   "development": {
     "username": "root",
-    "password": "YQNLlZoUuyecABlfWffszBihYkhuzAiW",
-    "database": "railway",
-    "host": "viaduct.proxy.rlwy.net",
-    "dialect": "mysql",
-    "url": "mysql://root:YQNLlZoUuyecABlfWffszBihYkhuzAiW@viaduct.proxy.rlwy.net:19557/railway",
-    "port": 19557
+    "password": null,
+    "database": "school_attendance",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
   "test": {
-    "username": "postgres",
-    "password": "ferdi",
-    "database": "doorlock_db",
+    "username": "root",
+    "password": null,
+    "database": "school_attendance",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "YQNLlZoUuyecABlfWffszBihYkhuzAiW",
-    "database": "railway",
-    "host": "viaduct.proxy.rlwy.net",
-    "dialect": "mysql",
-    "url": "mysql://root:YQNLlZoUuyecABlfWffszBihYkhuzAiW@viaduct.proxy.rlwy.net:19557/railway",
-    "port": 19557
+    "password": null,
+    "database": "school_attendance",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
