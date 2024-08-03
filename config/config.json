@@ -1,24 +1,24 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "school_attendance",
-    "host": "127.0.0.1",
+    "password": "tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM",
+    "database": "railway",
+    "host": "mysql.railway.internal",
     "dialect": "mysql",
-    "DB_URI": "mysql://root:tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM@viaduct.proxy.rlwy.net:24673/railway"
+    "DB_URI": "mysql://root:tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM@mysql.railway.internal:3306/railway"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "school_attendance",
-    "host": "127.0.0.1",
+    "password": "tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM",
+    "database": "railway",
+    "host": "mysql.railway.internal",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "school_attendance",
-    "host": "127.0.0.1",
-    "DB_URI": "mysql://root:tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM@viaduct.proxy.rlwy.net:24673/railway"
+    "password": "tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM",
+    "database": "railway",
+    "host": "mysql.railway.internal",
+    "DB_URI": "mysql://root:tXFxHLsqLjfEwFNSAPEfIZhAnVAjfGDM@mysql.railway.internal:3306/railway"
   }
 }
