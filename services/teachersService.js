@@ -25,9 +25,7 @@ class TeacherService {
           status: false,
           status_code: 400,
           message: "Fields name cannot be empty",
-          data: {
-            teacher: null,
-          },
+          data: null,
         };
       }
 
@@ -37,9 +35,7 @@ class TeacherService {
           status: false,
           status_code: 404,
           message: "School not found",
-          data: {
-            teacher: null,
-          },
+          data: null,
         };
       } else {
         const createTeacher = await TeacherRepository.createTeacher({
@@ -55,9 +51,7 @@ class TeacherService {
           status: true,
           status_code: 201,
           message: `Teacher with name ${createTeacher.name} successfully added`,
-          data: {
-            teacher: createTeacher,
-          },
+          data: createTeacher,
         };
       }
     } catch (error) {
@@ -65,9 +59,7 @@ class TeacherService {
         status: false,
         status_code: 500,
         message: error.message,
-        data: {
-          teacher: null,
-        },
+        data: null,
       };
     }
   }
@@ -96,7 +88,7 @@ class TeacherService {
         status: true,
         status_code: 201,
         message: "Successfully updated teacher",
-        data: { teacher: updateTeacher },
+        data: updateTeacher,
       };
     } catch (error) {
       console.log(error);
@@ -104,7 +96,7 @@ class TeacherService {
         status: false,
         status_code: 500,
         message: "Error updating teacher: " + error.message,
-        data: { teacher: null },
+        data: null,
       };
     }
   }
@@ -120,14 +112,14 @@ class TeacherService {
           status: true,
           status_code: 200,
           message: "Successfully found",
-          data: { teacher: getTeacher },
+          data: getTeacher,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "Not found",
-          data: { teacher: null },
+          data: null,
         };
       }
     } catch (error) {
@@ -135,7 +127,7 @@ class TeacherService {
         status: false,
         status_code: 500,
         message: error.message,
-        data: { teacher: null },
+        data: null,
       };
     }
   }
@@ -147,16 +139,14 @@ class TeacherService {
         status: true,
         status_code: 200,
         message: "Teacher deleted",
-        data: { teacher: deleteTeacher },
+        data: deleteTeacher,
       };
     } catch (error) {
       return {
         status: false,
         status_code: 500,
         message: "Error" + error.message,
-        data: {
-          teacher: null,
-        },
+        data: null,
       };
     }
   }
@@ -169,14 +159,14 @@ class TeacherService {
           status: true,
           status_code: 200,
           message: "Teacher retrieved",
-          data: { teacher: getTeacher },
+          data: getTeacher,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "teacher not found",
-          data: { teacher: null },
+          data: null,
         };
       }
     } catch (error) {
@@ -184,7 +174,7 @@ class TeacherService {
         status: true,
         status_code: 200,
         message: "Error getting student" + error.message,
-        data: { teacher: null },
+        data: null,
       };
     }
   }

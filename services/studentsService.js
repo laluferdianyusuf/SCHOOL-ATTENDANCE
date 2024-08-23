@@ -9,9 +9,7 @@ class StudentService {
           status: false,
           status_code: 400,
           message: "Fields name cannot be empty",
-          data: {
-            student: null,
-          },
+          data: null,
         };
       }
 
@@ -21,9 +19,7 @@ class StudentService {
           status: false,
           status_code: 404,
           message: "School not found",
-          data: {
-            student: null,
-          },
+          data: null,
         };
       } else {
         const addStudent = await StudentRepository.addStudent({
@@ -35,9 +31,7 @@ class StudentService {
           status: true,
           status_code: 201,
           message: `Student with name ${addStudent.name} successfully added`,
-          data: {
-            student: addStudent,
-          },
+          data: addStudent,
         };
       }
     } catch (error) {
@@ -46,9 +40,7 @@ class StudentService {
         status: false,
         status_code: 500,
         message: error.message,
-        data: {
-          student: null,
-        },
+        data: null,
       };
     }
   }
@@ -68,7 +60,7 @@ class StudentService {
           status: false,
           status_code: 400,
           message: "Parent name is required",
-          data: { student: null },
+          data: null,
         };
       }
       if (!job) {
@@ -76,7 +68,7 @@ class StudentService {
           status: false,
           status_code: 400,
           message: "Parent job is required",
-          data: { student: null },
+          data: null,
         };
       }
       if (!relationship) {
@@ -84,7 +76,7 @@ class StudentService {
           status: false,
           status_code: 400,
           message: "Relationship is required",
-          data: { student: null },
+          data: null,
         };
       }
       if (!parentPhone) {
@@ -92,7 +84,7 @@ class StudentService {
           status: false,
           status_code: 400,
           message: "Parent phone is required",
-          data: { student: null },
+          data: null,
         };
       }
 
@@ -110,7 +102,7 @@ class StudentService {
         status: true,
         status_code: 201,
         message: "Successfully updated student",
-        data: { student: updateStudent },
+        data: updateStudent,
       };
     } catch (error) {
       console.log(error);
@@ -118,7 +110,7 @@ class StudentService {
         status: false,
         status_code: 500,
         message: "Error updating student: " + error.message,
-        data: { student: null },
+        data: null,
       };
     }
   }
@@ -134,14 +126,14 @@ class StudentService {
           status: true,
           status_code: 200,
           message: "Successfully found",
-          data: { student: getStudent },
+          data: getStudent,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "Not found",
-          data: { student: null },
+          data: null,
         };
       }
     } catch (error) {
@@ -149,7 +141,7 @@ class StudentService {
         status: false,
         status_code: 500,
         message: error.message,
-        data: { student: null },
+        data: null,
       };
     }
   }
@@ -161,16 +153,14 @@ class StudentService {
         status: true,
         status_code: 200,
         message: "Student deleted",
-        data: { student: deleteStudent },
+        data: deleteStudent,
       };
     } catch (error) {
       return {
         status: false,
         status_code: 500,
         message: "Error" + error.message,
-        data: {
-          student: null,
-        },
+        data: null,
       };
     }
   }
@@ -183,14 +173,14 @@ class StudentService {
           status: true,
           status_code: 200,
           message: "Student retrieved",
-          data: { student: getStudent },
+          data: getStudent,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "Student not found",
-          data: { student: null },
+          data: null,
         };
       }
     } catch (error) {
@@ -198,7 +188,7 @@ class StudentService {
         status: true,
         status_code: 200,
         message: "Error getting student" + error.message,
-        data: { student: null },
+        data: null,
       };
     }
   }

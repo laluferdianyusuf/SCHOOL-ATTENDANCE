@@ -2,12 +2,12 @@ const StudentService = require("../services/studentsService");
 
 const addStudent = async (req, res) => {
   const { name, classroom } = req.body;
-  const school = req.admins.schoolId;
+  const { id } = req.params;
 
   const { status, status_code, message, data } =
     await StudentService.addStudent({
       name,
-      schoolId: school,
+      schoolId: id,
       classroom,
     });
 
@@ -17,7 +17,7 @@ const addStudent = async (req, res) => {
 };
 
 const getStudents = async (req, res, next) => {
-  const schoolId = req.admins.schoolId;
+  const { schoolId } = req.params;
 
   const { status, status_code, message, data } =
     await StudentService.findStudent({

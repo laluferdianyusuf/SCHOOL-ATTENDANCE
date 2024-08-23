@@ -1,11 +1,8 @@
-const attendance = require("../models/attendance");
 const AttendanceRepository = require("../repositories/attendanceRepository");
 const StudentRepository = require("../repositories/studentsRepository");
-const twilio = require("twilio");
+const NotificationRepository = require("../repositories/notificationRepository");
+const AdminRepository = require("../repositories/adminRepository");
 
-// const accountSid = "ACc668cfbe01ed2c160dcffc2bbf3fbe8e";
-// const authToken = "3ffed4f8600206200b1c010483cf3abb";
-// const client = twilio(accountSid, authToken);
 class AttendanceService {
   static async createAttendance({ studentId, timestamp }) {
     try {
@@ -22,36 +19,40 @@ class AttendanceService {
         });
 
         if (createAttendance) {
-          // const message = `Your child ${getStudent.name} have been attendance at ${getStudent.createdAt}.`;
+          const getAdminByStudentId = await AdminRepository.getAdminByStudentId(
+            { studentId }
+          );
+          const notificationDescriptions = `Attendance recorded for student ${getStudent.name} on ${createAttendance.timestamp}. Status: ${createAttendance.present}`;
 
-          // await client.messages.create({
-          //   body: message,
-          //   from: "whatsapp:+14155238886",
-          //   to: `whatsapp:${getStudent.parentPhone}`,
-          // });
-
+          await NotificationRepository.createNotifications({
+            userId: getAdminByStudentId.id,
+            description: notificationDescriptions,
+            schoolId: getStudent.schoolId,
+            studentId: studentId,
+            attendanceId: createAttendance.id,
+            isOpened: false,
+          });
           return {
             status: true,
             status_code: 201,
             message:
               "Your attendance has been recorded and notification sent to parent",
-            data: { attendance: createAttendance },
+            data: createAttendance,
           };
         } else {
           return {
             status: true,
             status_code: 201,
-            message:
-              "Your attendance has been recorded but no parent found to notify",
-            data: { attendance: createAttendance },
+            message: "Your attendance not recorded",
+            data: null,
           };
         }
       } else {
         return {
           status: false,
           status_code: 404,
-          message: "Fingerprint not found",
-          data: { attendance: null },
+          message: "Student not found",
+          data: null,
         };
       }
     } catch (error) {
@@ -60,7 +61,7 @@ class AttendanceService {
         status: false,
         status_code: 500,
         message: "error occurred" + error.message,
-        data: { attendance: null },
+        data: null,
       };
     }
   }
@@ -75,18 +76,14 @@ class AttendanceService {
           status: true,
           status_code: 200,
           message: "Attendance retrieved",
-          data: {
-            attendance: getAttendance,
-          },
+          data: getAttendance,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "Attendance not found",
-          data: {
-            attendance: null,
-          },
+          data: null,
         };
       }
     } catch (error) {
@@ -94,9 +91,7 @@ class AttendanceService {
         status: false,
         status_code: 500,
         message: "Error" + error.message,
-        data: {
-          attendance: null,
-        },
+        data: null,
       };
     }
   }

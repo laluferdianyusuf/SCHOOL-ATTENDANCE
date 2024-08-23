@@ -2,31 +2,28 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class School extends Model {
+  class schools extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      School.hasMany(models.students, {
+      schools.hasMany(models.students, {
         foreignKey: "schoolId",
       });
-      School.hasMany(models.teachers, {
+      schools.hasMany(models.teachers, {
         foreignKey: "schoolId",
       });
-      School.hasMany(models.attendances, {
+      schools.hasMany(models.attendances, {
         foreignKey: "schoolId",
       });
-      // School.hasMany(models.FingerprintDevice, {
-      //   foreignKey: "schoolId",
-      // });
-      School.hasMany(models.admins, {
+      schools.hasMany(models.admins, {
         foreignKey: "schoolId",
       });
     }
   }
-  School.init(
+  schools.init(
     {
       name: DataTypes.STRING,
       address: DataTypes.STRING,
@@ -37,5 +34,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "schools",
     }
   );
-  return School;
+  return schools;
 };

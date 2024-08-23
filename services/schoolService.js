@@ -8,9 +8,7 @@ class SchoolService {
           status: false,
           status_code: 400,
           message: "Fields name cannot be empty",
-          data: {
-            schools: null,
-          },
+          data: null,
         };
       }
 
@@ -21,9 +19,7 @@ class SchoolService {
           status: false,
           status_code: 400,
           message: `School with name ${getSchool.name} already exists`,
-          data: {
-            schools: null,
-          },
+          data: null,
         };
       } else {
         const addSchool = await SchoolRepository.addSchool({
@@ -35,9 +31,7 @@ class SchoolService {
           status: true,
           status_code: 201,
           message: `School with name ${addSchool.name} successfully added`,
-          data: {
-            schools: addSchool,
-          },
+          data: addSchool,
         };
       }
     } catch (error) {
@@ -46,9 +40,7 @@ class SchoolService {
         status: false,
         status_code: 500,
         message: error.message,
-        data: {
-          schools: null,
-        },
+        data: null,
       };
     }
   }
@@ -62,18 +54,14 @@ class SchoolService {
           status: true,
           status_code: 201,
           message: "School has been updated",
-          data: {
-            schools: getSchool,
-          },
+          data: getSchool,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "No school found",
-          data: {
-            schools: null,
-          },
+          data: null,
         };
       }
     } catch (error) {
@@ -81,9 +69,7 @@ class SchoolService {
         status: false,
         status_code: 500,
         message: "error: " + error,
-        data: {
-          schools: null,
-        },
+        data: null,
       };
     }
   }
@@ -97,14 +83,14 @@ class SchoolService {
           status: true,
           status_code: 200,
           message: "success",
-          data: { schools: getSchool },
+          data: getSchool,
         };
       } else {
         return {
           status: false,
           status_code: 404,
           message: "not found",
-          data: { schools: null },
+          data: null,
         };
       }
     } catch (error) {
@@ -112,7 +98,7 @@ class SchoolService {
         status: false,
         status_code: 500,
         message: "Error: " + error.message,
-        data: { schools: null },
+        data: null,
       };
     }
   }

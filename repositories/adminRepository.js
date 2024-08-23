@@ -8,6 +8,7 @@ class AdminRepository {
     password,
     role,
     schoolId,
+    studentId,
   }) {
     const createAdmin = await admins.create({
       name,
@@ -16,6 +17,7 @@ class AdminRepository {
       password,
       role,
       schoolId,
+      studentId,
     });
 
     return createAdmin;
@@ -38,6 +40,10 @@ class AdminRepository {
 
   static async getAdminByUsername({ username }) {
     const getAdmin = await admins.findOne({ where: { username } });
+    return getAdmin;
+  }
+  static async getAdminByStudentId({ studentId }) {
+    const getAdmin = await admins.findOne({ where: { studentId } });
     return getAdmin;
   }
 }
